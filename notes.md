@@ -68,6 +68,13 @@ Secrets Management: Move the JWT SigningKey out of appsettings.json and store it
 
 Cookie Security: Ensure the refresh token cookie uses HttpOnly = true (prevents XSS), Secure = true (forces HTTPS), and SameSite = SameSiteMode.Strict (mitigates CSRF).
 
+## get set vs get init :
+
+{ get; set; } (Mutable): The property can be changed at any time, anywhere in your application, by anyone.
+
+
+{ get; init; } (Init-Only Setter): The property can only be assigned a value during object creation (initialization). Once the object is created, trying to change it will throw a compile-time error.
+
 Database Hygiene: Implement a background worker or an on-login routine to prune/delete expired or revoked refresh tokens so the database table doesn't grow indefinitely.
 
 
